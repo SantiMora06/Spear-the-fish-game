@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "Arcade";
+    src: url(/fonts/arcade/ARCADE.TTF);
+}
+
+@font-face {
+    font-family: "CelticSea";
+    src: url(/fonts/celtic-sea-font/CelticSea-8MLXz.ttf);
+}
+
+
+
+:root{
+
+
+
+    font-size: 16px;
+}
+
+
+body{
+    margin:30px;
+}
+
+section#game-intro-screen{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url(/images/shutterstock_394200550-825x465.webp);
+    background-size: auto;
+    background-repeat:no-repeat;
+    background-position: center;
+    height: 500px;
+    justify-content: center;
+    filter: blur(50%);
+}
+
+#starting-point{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgba(255,255,255,50%);
+    padding: 100px;
+    font-family: "arcade";
+    font-size: 1.5em;
+}
+
+button{
+    font-family: "arcade";
+    display: flex;
+    font-size: 1.5em;
+}
+
+h1{
+    font-family: "arcade";
+    font-size: 3em;
+}
+
+#game-screen{
+    display: none;
+}
+
+section#game-end-screen{
+    display: none;
+}
