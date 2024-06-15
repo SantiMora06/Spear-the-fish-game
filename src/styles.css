@@ -19,7 +19,7 @@
 
 
 body{
-    margin:30px;
+    margin:10px;
 }
 
 section#game-intro-screen{
@@ -28,13 +28,13 @@ section#game-intro-screen{
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url(/images/shutterstock_394200550-825x465.webp);
+    background-image: url(/images/shutterstock_394200550-825x465-fotor-20240615121117.png);
     background-size: auto;
     background-repeat:no-repeat;
     background-position: center;
-    height: 500px;
+    height: 100%;
+    width: 100%;
     justify-content: center;
-    filter: blur(50%);
 }
 
 #starting-point{
@@ -43,21 +43,33 @@ section#game-intro-screen{
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    background-color: rgba(255,255,255,50%);
-    padding: 100px;
+    padding: 100px 200px;
     font-family: "arcade";
     font-size: 1.5em;
+    background-color: rgba(255, 255, 255, 70%);
 }
 
 button{
     font-family: "arcade";
     display: flex;
     font-size: 1.5em;
+    color: black;
+    background-color:transparent;
+    appearance: none;
+    cursor: pointer;
+    border-style: none;
+}
+
+button:hover{
+    color: antiquewhite;
+    background-color: black;
 }
 
 h1{
     font-family: "arcade";
-    font-size: 3em;
+    font-size: 2.5em;
+    display: block;
+    color: black;
 }
 
 #game-screen{
