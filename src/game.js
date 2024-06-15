@@ -5,21 +5,22 @@ class Game {
       this.gameEndScreen = document.getElementById("game-end-screen");
       this.player = new Player(
         this.gameScreen, 
-        300,
-        300,
-        300,
-        300,
+        20,
+        10,
+        100,
+        70,
         "/images/VIEJA-fotor-20240615121351.png"
       );
+      const background = new Background (this.gameScreen, 250, 100, 1100, 700, "/images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
 
-      this.height = 800;
-      this.width = 800;
+      this.height = 900;
+      this.width = 1200;
       this.obstacles = [];
       this.score = 0;
       this.lives = 3;
 
       this.gameIsOver = false;
-      this.gameIntervalId;
+      this.gameIntervalId = 120;
       this.gameLoopFrequency = Math.round(1000/60); // 60fps
     }
 
@@ -92,9 +93,9 @@ class Game {
   
       // Create a new obstacle based on a random probability
       // when there is no other obstacles on the screen
-      if (Math.random() > 0.98 && this.obstacles.length < 1) {
-        this.obstacles.push(new Obstacle(this.gameScreen));
-      }
+      //if (Math.random() > 0.98 && this.obstacles.length < 1) {
+        //this.obstacles.push(new Obstacle(this.gameScreen));
+      //}
     }
   
     // Create a new method responsible for ending the game

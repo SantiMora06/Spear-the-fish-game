@@ -8,21 +8,23 @@ class Player {
       this.directionX = 0;
       this.directionY = 0;
       this.element = document.createElement("img");
-  
+      
+
+   
       this.element.src = images;
       this.element.style.position = "absolute";
       this.element.style.width = `${width}px`;
       this.element.style.height = `${height}px`;
       this.element.style.left = `${left}px`;
       this.element.style.top = `${top}px`;
-  
-      this.gameScreen.appendChild(this.element);
+
+        this.gameScreen.appendChild(this.element);
     }
 
     move() {
-      // Update player's car position based on directionX and directionY
-      this.left += this.directionX;
+      // Update player's spearfisher position based on  directionY
       this.top += this.directionY;
+      this.left += this.directionX;
   
       // Ensure the player's car stays within the game screen
       if (this.left < 10) {
@@ -42,7 +44,7 @@ class Player {
       this.updatePosition();
     }
 
-    didCollide(obstacle) {
+    /* didCollide(obstacle) {
       const playerRect = this.element.getBoundingClientRect();
       const obstacleRect = obstacle.element.getBoundingClientRect();
   
@@ -59,7 +61,7 @@ class Player {
         return false;
       }
     }
-  
+  */
     updatePosition() {
       this.element.style.left = `${this.left}px`;
       this.element.style.top = `${this.top}px`;
