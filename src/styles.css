@@ -1,26 +1,23 @@
+ /*font imported */
+
 @font-face {
     font-family: "Arcade";
     src: url(/fonts/arcade/ARCADE.TTF);
 }
 
-@font-face {
-    font-family: "CelticSea";
-    src: url(/fonts/celtic-sea-font/CelticSea-8MLXz.ttf);
-}
+
 
 
 
 :root{
-
-
-
     font-size: 16px;
 }
-
 
 body{
     margin:10px;
 }
+
+/* Game intro screen styles*/
 
 section#game-intro-screen{
     display: flex;
@@ -71,6 +68,10 @@ h1{
     display: block;
     color: black;
 }
+
+/*    Until here all about the intro screen*/
+
+/* From here the game screen*/
 
 #game-screen{
     display: none;
