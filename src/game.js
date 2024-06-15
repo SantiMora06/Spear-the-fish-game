@@ -5,16 +5,18 @@ class Game {
       this.gameEndScreen = document.getElementById("game-end-screen");
       this.player = new Player(
         this.gameScreen, 
-        20,
-        10,
-        100,
-        70,
-        "/images/VIEJA-fotor-20240615121351.png"
+        30,
+        30,
+        150,
+        90,
+        "/images/spearfisher1.png"
       );
-      const background = new Background (this.gameScreen, 250, 100, 1100, 700, "/images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
+     this.background = new Background (this.gameScreen, 250, 100, 1100, 700, 
+        "/images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
 
-      this.height = 900;
-      this.width = 1200;
+        // These are the dimensions for the gameScreen
+      this.height = 700;
+      this.width = 1120;
       this.obstacles = [];
       this.score = 0;
       this.lives = 3;
