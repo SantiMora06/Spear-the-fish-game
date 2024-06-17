@@ -21,37 +21,51 @@ function startGame() {
     console.log(startButton)
 
 
-restartButton.addEventListener("click", function () {
-      // Call the restartGame function when the button is clicked
-      restartGame();
-    });
-
+restartButton.addEventListener("click", function() {
+    restartGame()
+})
+    function restartGame() {
+        location.reload();
+      }
+     
 
     document.addEventListener("keydown", event => {
         if (event.code === "KeyS" || event.code === "ArrowDown"){
             console.log("Letter S has been pressed")
-            game.player.directionY = 1;
+            game.player.directionY = 2;
         }
         document.addEventListener("keydown", event => {
             if (event.code === "KeyA" || event.code === "ArrowLeft"){
                 console.log("Letter A has been pressed")
-                game.player.directionX = -1;
+                game.player.directionX = -2;
             }
         if (event.code === "KeyW" || event.code === "ArrowUp"){
             console.log("Letter W has been pressed")
-            game.player.directionY = -1;
+            game.player.directionY = -2;
         }
         if (event.code === "KeyD" || event.code === "ArrowRight"){
             console.log("Letter D has been pressed")
-            game.player.directionX = +1;
+            game.player.directionX = +2;
         }
     })
+})
 
-    document.addEventListener("keydown", event => {
-        if(event.code === "KeyJ"){
-            console.log("Letter J has been pressed")
-            //game.player
+document.addEventListener("keyup", event => {
+    if (event.code === "KeyS" || event.code === "ArrowDown"){
+        console.log("Letter S has been released")
+        game.player.directionY = 0;
+    }
+        if (event.code === "KeyA" || event.code === "ArrowLeft"){
+            console.log("Letter A has been released")
+            game.player.directionX = 0;
         }
-    })
+    if (event.code === "KeyW" || event.code === "ArrowUp"){
+        console.log("Letter W has been released")
+        game.player.directionY = 0;
+    }
+    if (event.code === "KeyD" || event.code === "ArrowRight"){
+        console.log("Letter D has been released")
+        game.player.directionX = 0;
+    }
 })
 })

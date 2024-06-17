@@ -1,13 +1,14 @@
-class Obstacle {
+class Fishes {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = Math.floor(Math.random() * 300 + 70);
-      this.top = 0;
+      this.left = 1000;
+      this.top = Math.floor(Math.random() * 300 + 70);
       this.width = 100;
-      this.height = 150;
+      this.height = 60;
+      this.score = 0;
       this.element = document.createElement("img");
   
-      this.element.src = "";
+      this.element.src = "/images/Vieja1.png";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
@@ -18,16 +19,20 @@ class Obstacle {
     }
   
     updatePosition() {
-      // Update the obstacle's position based on the properties left and top
+      // We update the fishe's position based on how far from the left or top
       this.element.style.left = `${this.left}px`;
       this.element.style.top = `${this.top}px`;
     }
   
     move() {
-      // Move the obstacle down by 3px
-      this.top += 3;
-      // Update the obstacle's position on the screen
+      // Move the fish down, right, up, left
+      this.top += 0;
+      this.left -= 3;
+
+  
+      // Update the player's fish position on the screen
       this.updatePosition();
     }
+
   }
   

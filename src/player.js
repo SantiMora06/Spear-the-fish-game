@@ -9,8 +9,6 @@ class Player {
       this.directionY = 0;
       this.element = document.createElement("img");
       
-
-   
       this.element.src = images;
       this.element.style.position = "absolute";
       this.element.style.width = `${width}px`;
@@ -22,11 +20,11 @@ class Player {
     }
 
     move() {
-      // Update player's spearfisher position based on  directionY
+      // Update player's spearfisher position based on directionX and Y
       this.top += this.directionY;
       this.left += this.directionX;
   
-      // Ensure the player's car stays within the game screen
+      // We need to be sure that the spearfisher doesn't go away from the sea.
       if (this.left < 10) {
         this.left = 10;
       }
@@ -40,28 +38,46 @@ class Player {
         this.top = this.gameScreen.offsetHeight - this.height - 10;
       }
   
-      // Update the player's car position on the screen
+      // Update the spearfisher position
       this.updatePosition();
     }
 
-    /* didCollide(obstacle) {
-      const playerRect = this.element.getBoundingClientRect();
-      const obstacleRect = obstacle.element.getBoundingClientRect();
+   didCollideWithFish(fish) {
+      const playerArea = this.element.getBoundingClientRect();
+      
+      const fishArea = fish.element.getBoundingClientRect();
+  
+      if ( // THIS NEEDS TO BE CHECKED
+        playerArea.right > fishArea.left && playerArea.left < fishArea.right &&
+        playerArea.top < fishArea.bottom &&
+         playerArea.bottom > fishArea.top) {
+        console.log("You got a fish!");
+  
+        return true;
+      } else {
+        return false
+      }
+    }
+
+    didCollideWithThreat(threat) {
+      const playerArea = this.element.getBoundingClientRect();
+      
+      const threatArea = threat.element.getBoundingClientRect();
   
       if (
-        playerRect.left < obstacleRect.right &&
-        playerRect.right > obstacleRect.left &&
-        playerRect.top < obstacleRect.bottom &&
-        playerRect.bottom > obstacleRect.top
+        playerArea.left < threatArea.right &&
+        playerArea.right > threatArea.left &&
+        playerArea.top < threatArea.bottom &&
+        playerArea.bottom > threatArea.top
       ) {
-        console.log("Crash!");
+        console.log("A threat has reach you!");
   
         return true;
       } else {
         return false;
       }
     }
-  */
+
     updatePosition() {
       this.element.style.left = `${this.left}px`;
       this.element.style.top = `${this.top}px`;
