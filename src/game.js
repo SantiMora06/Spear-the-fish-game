@@ -4,25 +4,28 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.introScreen = document.getElementById("game-intro-screen");
         this.gameScreen = document.getElementById("game-screen");
         this.gameEndScreen = document.getElementById("game-end-screen");
+        this.stats = document.getElementById("stats")
+        this.gameContainer = document.getElementById("game-container")
         this.player = new Player(
             this.gameScreen,
-            30,
-            30,
-            300,
             100,
+            60,
+            250,
+            150,
             "/images/spearfisher1.png"
         );
-        this.background = new Background(this.gameScreen, 250, 100, 1100, 700,
+        this.background = new Background(this.gameScreen, 0, 0, 100, 100,
             "/images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
 
 
         // These are the dimensions for the gameScreen
-        this.height = 700;
-        this.width = 1120;
+        this.height = 100;
+        this.width = 100;
         this.fishes = [];// These will be the fishes that will be displayed on the gameScreen
         this.threats = []; // These will be the threats that will be displayed on the gameScreen
         this.score = 0;
         this.lives = 3;
+        this.gameContainer.style.display ="flex";
 
         this.gameIsOver = false;
         this.gameIntervalId = 120;
@@ -32,13 +35,16 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
     start() { //When we start the game we set the height and the width of the gameScreen.
         // Set the height and width of the game screen
-        this.gameScreen.style.height = `${this.height}px`;
-        this.gameScreen.style.width = `${this.width}px`;
+        this.gameScreen.style.height = `${this.height}vh`;
+        this.gameScreen.style.width = `${this.width}vw`;
 
         // Also we hide the start screen
         this.introScreen.style.display = "none";
         // And we show the game screen
-        this.gameScreen.style.display = "block";
+        this.gameScreen.style.display = "flex";
+        this.gameEndScreen.style.display = 'none';
+        this.stats.style.display ="flex";
+        
 
 
 
@@ -73,14 +79,26 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
             if (this.player.didCollideWithFish(fish)) { // 
 
-                fish.element.remove(); // Remove the obstacle element from the DOM
+                fish.element.remove(); // Remove the fish element from the DOM
 
-                this.fishes.splice(i, 1)// Remove obstacle object from the array
+                this.fishes.splice(i, 1)// Remove fish from the array
 
-                this.score += 10; // Update the score
+                this.score+=10; // Update the score
+
+                this.fishes.push(new Fishes *2(this.gameScreen))
+
+                this.threats.push(new Threats(this.gameScreen))
 
                 i--; // Update the counter variable for the removed fishes
-            }
+
+            }  
+            if (fish.left > this.gameScreen.clientWidth) { // If the fish goes over the client width
+                const newFish = new Fishes(this.gameScreen); // Create a new instance of the Fishes class
+                this.fishes.push(newFish); // Add the new fish to the fishes array
+              }
+            
+        
+            document.getElementById('score').innerText = this.score
         }
 
         for (let j = 0; j < this.threats.length; j++) {
@@ -89,36 +107,49 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
             if (this.player.didCollideWithThreat(threat)) { // If the player get touch by a threat
 
-                this.lives--; // Decrease one life
-
+                this.lives-=1; // Decrease one life
 
                 threat.element.remove() // Remove the threat from the DOM
 
-                this.threats.splice(j, 1) // Remove the fish from the array
+                this.threats.splice(j, 1) // Remove the threat from the array
 
                 j--; // Update the counter variable for the removed threats
-            }
+                this.threats.push(new Threats *2(this.gameScreen))
+
+            } 
+            if (threat.left > this.gameScreen.clientWidth) { // If the fish goes over the client width
+                const newThreat = new Threats(this.gameScreen); // Create a new instance of the Fishes class
+                this.threats.push(newThreat); // Add the new fish to the fishes array
+              }
+
+
+            document.getElementById('lives').innerText = this.lives
         }
+
 
         // If you ran out of lives(0), end the game
         if (this.lives === 0) {
             this.endGame();
         }
 
+        if(this.score === 100){
+            this.endGame()
+        }
+
         // We create a new fish based on a random probability
         // when there is no other fish on the screen
-        if (Math.random() > 0.80 && this.fishes.length < 1) {
+      
+        // We create a new threat based on a random probability
+        // when there is no other fish on the screen
+
+        if (Math.random() > 0.2 && this.threats.length < 1) {
+            this.threats.push(new Threats(this.gameScreen));
+        }
+        if (Math.random() > 0.3 && this.fishes.length < 1) {
             this.fishes.push(new Fishes(this.gameScreen));
         }
 
-        // We create a new threat based on a random probability
-        // when there is no other fish on the screen
-        if (Math.random() > 0.99 && this.threats.length < 1) {
-            this.threats.push(new Threats(this.gameScreen));
-        }
-
         //We create a new threat when there is no other in the screen based on random
-
     }
 
     // We create a method to answer to the endGame.
@@ -135,7 +166,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
         // Hide game screen
         this.gameScreen.style.display = "none";
         // Show end game screen
-        this.gameEndScreen.style.display = "block";
+        this.gameEndScreen.style.display = "flex";
     }
 
     restartGame() {

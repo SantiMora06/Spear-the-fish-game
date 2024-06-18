@@ -5,14 +5,13 @@ class Background {
       this.top = top;
       this.width = width;
       this.height = height;
-      this.directionX = 0;
-      this.directionY = 0;
       this.element = document.createElement("img");
 
       this.element.src = images;
       this.element.style.position = "";
-      this.element.style.width = `${width}px`;
-      this.element.style.height = `${height}px`;
+      this.element.style.display = "flex"
+      this.element.style.width = `${width}%`;
+      this.element.style.height = `${height}%`;
       this.element.style.left = `${left}px`;
       this.element.style.top = `${top}px`;
 ;

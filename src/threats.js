@@ -1,10 +1,10 @@
 class Threats {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = 600;
-      this.top = Math.random;
-      this.width = 250;
-      this.height = 150;
+      this.left = 1500;
+      this.top =  Math.floor(Math.random() * 300 + 70);
+      this.width = 170;
+      this.height = 110;
       this.element = document.createElement("img");
   
       this.element.src = "/images/shark.png";

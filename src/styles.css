@@ -10,7 +10,7 @@
 }
 
 body{
-    margin:10px;
+    margin:0;
 }
 
 /* Game intro screen styles*/
@@ -75,4 +75,19 @@ h1{
 
 section#game-end-screen{
     display: none;
+}
+
+#stats{
+    display: none;
+    background-color: black;
+    font-family: "arcade";
+    color: antiquewhite;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+    font-size: 0.8em;
+    width: 10%;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
 }

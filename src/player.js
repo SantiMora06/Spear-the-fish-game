@@ -48,9 +48,11 @@ class Player {
       const fishArea = fish.element.getBoundingClientRect();
   
       if ( // THIS NEEDS TO BE CHECKED
-        playerArea.right > fishArea.left && playerArea.left < fishArea.right &&
+        playerArea.left < fishArea.right &&
+        playerArea.right > fishArea.left &&
         playerArea.top < fishArea.bottom &&
-         playerArea.bottom > fishArea.top) {
+        playerArea.bottom > fishArea.top
+    ) {
         console.log("You got a fish!");
   
         return true;

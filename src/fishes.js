@@ -1,10 +1,10 @@
 class Fishes {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = 1000;
+      this.left = 1500;
       this.top = Math.floor(Math.random() * 300 + 70);
-      this.width = 100;
-      this.height = 60;
+      this.width = 90;
+      this.height = 50;
       this.score = 0;
       this.element = document.createElement("img");
   
