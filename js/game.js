@@ -4,8 +4,9 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.introScreen = document.getElementById("game-intro-screen");
         this.gameScreen = document.getElementById("game-screen");
         this.gameEndScreen = document.getElementById("game-end-screen");
-        this.stats = document.getElementById("stats")
-        this.gameContainer = document.getElementById("game-container")
+        this.stats = document.getElementById("stats");
+        this.gameContainer = document.getElementById("game-container");
+        this.soundWater = document.getElementById("waterSound");
         this.player = new Player(
             this.gameScreen,
             100,
@@ -44,6 +45,9 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.gameScreen.style.display = "flex";
         this.gameEndScreen.style.display = 'none';
         this.stats.style.display ="flex";
+        // Stop the sea sound
+        // Play the heartbeat sound
+        this.soundWater.pause();
         
 
 
