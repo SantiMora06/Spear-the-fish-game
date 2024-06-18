@@ -7,7 +7,7 @@ class Threats {
       this.height = 110;
       this.element = document.createElement("img");
   
-      this.element.src = "/images/shark.png";
+      this.element.src = "images/shark.png";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;

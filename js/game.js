@@ -12,10 +12,10 @@ class Game { // We create the Game class, no arguments in the constructor but in
             60,
             250,
             150,
-            "/images/spearfisher1.png"
+            "images/spearfisher1.png"
         );
         this.background = new Background(this.gameScreen, 0, 0, 100, 100,
-            "/images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
+            "images/depositphotos_117388182-stock-photo-underwater-sea-ocean-with-light.webp")
 
 
         // These are the dimensions for the gameScreen

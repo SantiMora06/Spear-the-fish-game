@@ -8,7 +8,7 @@ class Fishes {
       this.score = 0;
       this.element = document.createElement("img");
   
-      this.element.src = "/images/Vieja1.png";
+      this.element.src = "images/Vieja1.png";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
