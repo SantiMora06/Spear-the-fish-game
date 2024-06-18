@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Arcade";
-    src: url(/fonts/arcade/ARCADE.TTF);
+    src: url(../fonts/arcade/ARCADE.TTF);
 }
 
 :root{
@@ -21,7 +21,7 @@ section#game-intro-screen{
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url(/images/shutterstock_394200550-825x465-fotor-20240615121117.png);
+    background-image: url(../images/shutterstock_394200550-825x465-fotor-20240615121117.png);
     background-size: auto;
     background-repeat:no-repeat;
     background-position: center;
