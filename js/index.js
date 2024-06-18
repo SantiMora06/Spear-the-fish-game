@@ -8,7 +8,7 @@ const gameContainer = document.getElementById("game-container")
 const gameScreen = document.getElementById("game-screen")
 const stats = document.getElementById("stats")
 const soundWater = document.getElementById("waterSound");
-const heartbeat = document.getElementById("heartbeat1")
+const heartbeat = document.getElementById("heartbeat1");
 
 let game;
   
@@ -18,9 +18,9 @@ function startGame() {
       console.log("start game");
       game = new Game;
       game.start();
-    }
 
     console.log(startButton)
+}
 
 
 restartButton.addEventListener("click", function() {

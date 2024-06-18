@@ -1,7 +1,7 @@
 class Threats {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = 1500;
+      this.left = 1800;
       this.top =  Math.floor(Math.random() * 400 + 70);
       this.width = 170;
       this.height = 110;

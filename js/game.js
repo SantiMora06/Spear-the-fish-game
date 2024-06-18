@@ -48,10 +48,8 @@ class Game { // We create the Game class, no arguments in the constructor but in
         // Stop the sea sound
         // Play the heartbeat sound
         this.soundWater.pause();
-        
-
-
-
+    
+    
 
         // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
         this.gameIntervalId = setInterval(() => {
@@ -60,7 +58,6 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
     }
     gameLoop() {
-        console.log("in the game loop");
 
         this.update();
 
@@ -101,7 +98,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
                 this.fishes.push(newFish); // Add the new fish to the fishes array
               }
 
-              if(fish.left - fish.width < 0){
+              if(fish.left < -200){
                 fish.element.remove(); // Remove the fish element from the DOM
 
                 this.fishes.splice(i, 1)
@@ -131,12 +128,11 @@ class Game { // We create the Game class, no arguments in the constructor but in
             } 
             if (this.threats.length <= 2) { // If the fish goes over the client width
                  // Add the new fish to the fishes array
-                console.log("A threat was released");
                 const newThreat = new Threats(this.gameScreen); // Create a new instance of the Fishes class
               this.threats.push(newThreat);
               }
 
-              if(threat.left - threat.width < 0){
+              if(threat.left < -200){
                 threat.element.remove(); // Remove the fish element from the DOM
 
                 this.threats.splice(j, 1)

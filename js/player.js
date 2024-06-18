@@ -54,7 +54,6 @@ class Player {
         playerArea.top < fishArea.bottom &&
         playerArea.bottom > fishArea.top
     ) {
-        console.log("You got a fish!");
   
         return true;
       } else {
@@ -73,7 +72,6 @@ class Player {
         playerArea.top < threatArea.bottom &&
         playerArea.bottom > threatArea.top
       ) {
-        console.log("A threat has reach you!");
   
         return true;
       } else {

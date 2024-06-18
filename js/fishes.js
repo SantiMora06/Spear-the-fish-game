@@ -1,7 +1,7 @@
 class Fishes {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = 1500;
+      this.left = 1800;
       this.top = Math.floor(Math.random() * 300 + 70);
       this.width = 90;
       this.height = 50;
@@ -17,13 +17,13 @@ class Fishes {
       } else if (randomFish <= 0.7) {
         this.element = document.createElement("img")
         this.element.src = "images/download.png";
-        this.width = 110;
+        this.width = 140;
         this.height = 60;
       } else {
         this.element = document.createElement("img")
         this.element.src = "images/Bicuda.png";
-        this.width = 140;
-        this.height = 80;
+        this.width = 160;
+        this.height = 90;
       }
     
       this.element.style.position = "absolute";
@@ -43,7 +43,6 @@ class Fishes {
   
     move() {
       // Move the fish down, right, up, left
-      this.top += 0;
       this.left -= 3;
 
   
