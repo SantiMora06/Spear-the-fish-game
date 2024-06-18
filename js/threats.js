@@ -2,12 +2,22 @@ class Threats {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
       this.left = 1500;
-      this.top =  Math.floor(Math.random() * 300 + 70);
+      this.top =  Math.floor(Math.random() * 400 + 70);
       this.width = 170;
       this.height = 110;
-      this.element = document.createElement("img");
-  
-      this.element.src = "images/shark.png";
+      
+      const randomThreat = Math.random();
+      if(randomThreat < 0.5){
+        this.element = document.createElement("img")
+        this.element.src = "images/shark.png";
+      } else {
+        this.element = document.createElement("img")
+        this.element.src = "images/jellyfish_PNG53.png";
+        this.width = 110;
+        this.height = 170;
+      }
+
+
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
@@ -25,7 +35,6 @@ class Threats {
   
     move() {
       // The threat needs to move
-      this.top += 0;
       this.left -= 4;
       // We need to update the fishes position on the game Screen
       this.updatePosition();

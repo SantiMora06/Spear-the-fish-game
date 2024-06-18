@@ -61,7 +61,7 @@ button:hover{
 h1{
     font-family: "arcade";
     font-size: 2.5em;
-    display: block;
+    display: flex;
     color: black;
 }
 
@@ -75,6 +75,33 @@ h1{
 
 section#game-end-screen{
     display: none;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url(../images/shutterstock_394200550-825x465-fotor-20240615121117.png);
+    background-size: auto;
+    background-repeat:no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+section#game-end-screen-text{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 100px 200px;
+    font-family: "arcade";
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 70%);
+    margin-block-start: 0;
+    margin-block-end: 0;
+    width: 50%;
+
 }
 
 #stats{
@@ -90,4 +117,20 @@ section#game-end-screen{
     position: relative;
     flex-direction: column;
     align-items: center;
+}
+
+#restartbutton{
+    font-family: "arcade";
+    display: flex;
+    font-size: 1.5em;
+    color: black;
+    background-color:transparent;
+    appearance: none;
+    cursor: pointer;
+    border-style: none;
+}
+
+#restartbutton:hover{
+    color: antiquewhite;
+    background-color: black;
 }

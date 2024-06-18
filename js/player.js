@@ -7,6 +7,7 @@ class Player {
       this.height = height;
       this.directionX = 0;
       this.directionY = 0;
+      this.speed = 3;
       this.element = document.createElement("img");
       
       this.element.src = images;
@@ -21,8 +22,8 @@ class Player {
 
     move() {
       // Update player's spearfisher position based on directionX and Y
-      this.top += this.directionY;
-      this.left += this.directionX;
+      this.top += this.directionY * this.speed;
+      this.left += this.directionX * this.speed;
   
       // We need to be sure that the spearfisher doesn't go away from the sea.
       if (this.left < 10) {

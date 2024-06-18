@@ -89,14 +89,14 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
                 this.score+=10; // Update the score
 
-                this.fishes.push(new Fishes *2(this.gameScreen))
+                this.fishes.push(new Fishes(this.gameScreen))
 
                 this.threats.push(new Threats(this.gameScreen))
 
                 i--; // Update the counter variable for the removed fishes
 
             }  
-            if (fish.left > this.gameScreen.clientWidth) { // If the fish goes over the client width
+            if (fish.length <= 2) { // If the fish goes over the client width
                 const newFish = new Fishes(this.gameScreen); // Create a new instance of the Fishes class
                 this.fishes.push(newFish); // Add the new fish to the fishes array
               }
@@ -111,33 +111,34 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
             if (this.player.didCollideWithThreat(threat)) { // If the player get touch by a threat
 
-                this.lives-=1; // Decrease one life
+                this.lives--; // Decrease one life
 
                 threat.element.remove() // Remove the threat from the DOM
 
                 this.threats.splice(j, 1) // Remove the threat from the array
 
                 j--; // Update the counter variable for the removed threats
-                this.threats.push(new Threats *2(this.gameScreen))
+                this.threats.push(new Threats (this.gameScreen))
 
             } 
-            if (threat.left > this.gameScreen.clientWidth) { // If the fish goes over the client width
+            if (this.threats.length <= 2) { // If the fish goes over the client width
+                 // Add the new fish to the fishes array
+                console.log("A threat was released");
                 const newThreat = new Threats(this.gameScreen); // Create a new instance of the Fishes class
-                this.threats.push(newThreat); // Add the new fish to the fishes array
+              this.threats.push(newThreat);
               }
-
 
             document.getElementById('lives').innerText = this.lives
         }
 
 
         // If you ran out of lives(0), end the game
-        if (this.lives === 0) {
+        if (this.lives <= 0) {
             this.endGame();
         }
 
         if(this.score === 100){
-            this.endGame()
+            this.endGameWin()
         }
 
         // We create a new fish based on a random probability
@@ -146,10 +147,10 @@ class Game { // We create the Game class, no arguments in the constructor but in
         // We create a new threat based on a random probability
         // when there is no other fish on the screen
 
-        if (Math.random() > 0.2 && this.threats.length < 1) {
+        if (Math.random() > 0.6 && this.threats.length <= 1) {
             this.threats.push(new Threats(this.gameScreen));
         }
-        if (Math.random() > 0.3 && this.fishes.length < 1) {
+        if (Math.random() > 0.8 && this.fishes.length <= 1) {
             this.fishes.push(new Fishes(this.gameScreen));
         }
 
@@ -169,8 +170,30 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.gameIsOver = true;
         // Hide game screen
         this.gameScreen.style.display = "none";
+        this.gameContainer.style.display = "none";
         // Show end game screen
         this.gameEndScreen.style.display = "flex";
+        
+    }
+
+    endGameWin() {
+        this.player.element.remove(); //We remove the playerr
+        this.fishes.forEach(function (fish) { //For each fish or threat, remove.
+            fish.element.remove();
+        });
+        this.threats.forEach(function (threa) {
+            threa.element.remove();
+        })
+
+        this.gameIsOver = true;
+        // Hide game screen
+        this.gameScreen.style.display = "none";
+        this.gameContainer.style.display = "none";
+        // Show end game screen
+        this.gameEndScreen.style.display = "flex";
+        document.getElementById("endScreenTitle").innerText = "You got an huge amount of fish... impresive"
+        document.getElementById("endScreenPa").innerText = `Aqua"man" will miss its friends`
+    
     }
 
     restartGame() {
