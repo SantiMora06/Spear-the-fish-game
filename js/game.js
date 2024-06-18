@@ -100,6 +100,14 @@ class Game { // We create the Game class, no arguments in the constructor but in
                 const newFish = new Fishes(this.gameScreen); // Create a new instance of the Fishes class
                 this.fishes.push(newFish); // Add the new fish to the fishes array
               }
+
+              if(fish.left - fish.width < 0){
+                fish.element.remove(); // Remove the fish element from the DOM
+
+                this.fishes.splice(i, 1)
+
+                i--; // Update the counter variable for the removed fishes
+              }
             
         
             document.getElementById('score').innerText = this.score
@@ -126,6 +134,14 @@ class Game { // We create the Game class, no arguments in the constructor but in
                 console.log("A threat was released");
                 const newThreat = new Threats(this.gameScreen); // Create a new instance of the Fishes class
               this.threats.push(newThreat);
+              }
+
+              if(threat.left - threat.width < 0){
+                threat.element.remove(); // Remove the fish element from the DOM
+
+                this.threats.splice(j, 1)
+
+                j--; // Update the counter variable for the removed fishes
               }
 
             document.getElementById('lives').innerText = this.lives

@@ -9,6 +9,23 @@ class Fishes {
       this.element = document.createElement("img");
   
       this.element.src = "images/Vieja1.png";
+
+      const randomFish = Math.random();
+      if(randomFish <= 0.4){
+        this.element = document.createElement("img")
+        this.element.src = "images/Vieja1.png";
+      } else if (randomFish <= 0.7) {
+        this.element = document.createElement("img")
+        this.element.src = "images/download.png";
+        this.width = 110;
+        this.height = 60;
+      } else {
+        this.element = document.createElement("img")
+        this.element.src = "images/Bicuda.png";
+        this.width = 140;
+        this.height = 80;
+      }
+    
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
