@@ -5,8 +5,8 @@ class Player {
       this.top = top;
       this.width = width;
       this.height = height;
-      this.directionX = 0;
-      this.directionY = 0;
+      this.directionX = 1;
+      this.directionY = 1;
       this.speed = 3;
       this.element = document.createElement("img");
       
