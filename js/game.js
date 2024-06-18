@@ -47,7 +47,6 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.stats.style.display ="flex";
         // Stop the sea sound
         // Play the heartbeat sound
-        this.soundWater.pause();
     
     
 

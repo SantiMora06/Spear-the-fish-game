@@ -72,6 +72,7 @@ class Player {
         playerArea.top < threatArea.bottom &&
         playerArea.bottom > threatArea.top
       ) {
+        console.log("A threat has reach you!");
   
         return true;
       } else {
