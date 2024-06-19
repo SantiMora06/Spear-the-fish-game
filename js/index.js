@@ -11,6 +11,8 @@ const soundWater = document.getElementById("waterSound");
 const heartbeat = document.getElementById("heartbeat1")
 
 let game;
+
+heartbeat.pause();
   
 startButton.addEventListener("click", startGame)
   
@@ -18,6 +20,7 @@ function startGame() {
       console.log("start game");
       game = new Game;
       game.start();
+      heartbeat.play();
 
     console.log(startButton)
 }
