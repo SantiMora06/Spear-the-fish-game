@@ -13,6 +13,7 @@ const heartbeat = document.getElementById("heartbeat1")
 let game;
 
 heartbeat.pause();
+heartbeat.volume = 0.05;
   
 startButton.addEventListener("click", startGame)
   
