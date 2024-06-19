@@ -71,12 +71,12 @@ function nextPageFishesInfo (){
 }
 
 
-playAgain.addEventListener("click", hereWeGo);
-
-function hereWeGo(){
-    fihsesDisplay.style.display ="none";
-    introScreen.style.display = "flex";
-}
+playAgain.addEventListener("click", function() {
+    restartGame()
+})
+    function restartGame() {
+        location.reload();
+      }
         
     
 
