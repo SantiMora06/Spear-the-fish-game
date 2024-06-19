@@ -12,8 +12,6 @@ const heartbeat = document.getElementById("heartbeat1")
 
 let game;
 
-heartbeat.pause();
-heartbeat.volume = 0.05;
   
 startButton.addEventListener("click", startGame)
   
@@ -21,7 +19,9 @@ function startGame() {
       console.log("start game");
       game = new Game;
       game.start();
-      heartbeat.play();
+      heartbeat.muted = false;
+      heartbeat.play()
+      heartbeat.volume = 0.05;
 
     console.log(startButton)
 }
