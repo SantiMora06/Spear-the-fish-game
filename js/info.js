@@ -9,13 +9,14 @@ const bicudaTxt = document.getElementById("bicudaText")
 const button = document.getElementsByTagName("button")
 const next = document.getElementById("next-button")
 const fishTxt = document.getElementById("fishesText")
+const playAgain = document.getElementById("play-again");
 
 fishesInfo.addEventListener("click", showFishesInfo)
 
     function showFishesInfo () {
         allTheFishes.style.display = "none"
 
-        introScreen.remove();
+        introScreen.style.display = "none"
 
         fihsesDisplay.style.display = "flex"
         fihsesDisplay.style.flexDirection = "column"
@@ -70,6 +71,12 @@ function nextPageFishesInfo (){
 }
 
 
+playAgain.addEventListener("click", hereWeGo);
+
+function hereWeGo(){
+    fihsesDisplay.style.display ="none";
+    introScreen.style.display = "flex";
+}
         
     
 
