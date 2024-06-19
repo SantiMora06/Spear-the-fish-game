@@ -9,9 +9,9 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.soundWater = document.getElementById("waterSound");
         this.player = new Player(
             this.gameScreen,
-            100,
-            60,
-            250,
+            0,
+            0,
+            200,
             150,
             "images/spearfisher1.png"
         );
@@ -27,6 +27,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.score = 0;
         this.lives = 3;
         this.gameContainer.style.display ="flex";
+        this.gameContainer.style.overflow = "hiddden"
 
         this.gameIsOver = false;
         this.gameIntervalId = 120;
