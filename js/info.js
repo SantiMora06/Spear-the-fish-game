@@ -68,6 +68,7 @@ function nextPageFishesInfo (){
 
     fishTxt.style.textAlign = "justify";
     fishTxt.style.margin = `0 ${15}% 0 ${15}%`
+    next.style.display = "none"
 }
 
 
