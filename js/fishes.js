@@ -2,7 +2,7 @@ class Fishes {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
       this.left = 1800;
-      this.top = Math.floor(Math.random() * 300 + 70);
+      this.top = Math.floor(Math.random() * 800 + 70);
       this.width = 90;
       this.height = 50;
       this.score = 0;

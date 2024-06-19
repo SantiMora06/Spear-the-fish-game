@@ -36,7 +36,7 @@ section#game-intro-screen{
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    padding: 100px 200px;
+    padding: 0px 200px 100px 200px;
     font-family: "arcade";
     font-size: 1.5em;
     background-color: rgba(255, 255, 255, 70%);
@@ -51,6 +51,7 @@ button{
     appearance: none;
     cursor: pointer;
     border-style: none;
+    margin: 1%;
 }
 
 button:hover{
@@ -98,10 +99,6 @@ section#game-end-screen-text{
     font-family: "arcade";
     font-size: 1em;
     background-color: rgba(255, 255, 255, 70%);
-    margin-block-start: 0;
-    margin-block-end: 0;
-    width: 50%;
-
 }
 
 #stats{
@@ -133,4 +130,9 @@ section#game-end-screen-text{
 #restartbutton:hover{
     color: antiquewhite;
     background-color: black;
+}
+
+
+#infoFish {
+    display: none;
 }
