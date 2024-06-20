@@ -6,7 +6,6 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.gameEndScreen = document.getElementById("game-end-screen");
         this.stats = document.getElementById("stats");
         this.gameContainer = document.getElementById("game-container");
-        this.soundWater = document.getElementById("waterSound");
         this.player = new Player(
             this.gameScreen,
             0,
@@ -24,14 +23,18 @@ class Game { // We create the Game class, no arguments in the constructor but in
         this.width = 100;
         this.fishes = [];// These will be the fishes that will be displayed on the gameScreen
         this.threats = []; // These will be the threats that will be displayed on the gameScreen
+        this.turtles = [];
         this.score = 0;
         this.lives = 3;
-        this.gameContainer.style.display ="flex";
+        this.gameContainer.style.display = "flex";
         this.gameContainer.style.overflow = "hiddden"
 
         this.gameIsOver = false;
         this.gameIntervalId = 120;
         this.gameLoopFrequency = Math.round(1000 / 60); // 60fps
+        this.gamePaused = false;  // Add a gamePaused property to track the game state
+        this.resumedGame =false
+
     }
 
 
@@ -45,11 +48,11 @@ class Game { // We create the Game class, no arguments in the constructor but in
         // And we show the game screen
         this.gameScreen.style.display = "flex";
         this.gameEndScreen.style.display = 'none';
-        this.stats.style.display ="flex";
+        this.stats.style.display = "flex";
         // Stop the sea sound
         // Play the heartbeat sound
-    
-    
+
+
 
         // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
         this.gameIntervalId = setInterval(() => {
@@ -57,6 +60,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
         }, this.gameLoopFrequency)
 
     }
+
     gameLoop() {
 
         this.update();
@@ -65,6 +69,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
             clearInterval(this.gameIntervalId)
         }
     }
+
 
 
     update() { // ESTO HAY QUE CREARLO CON PECES Y AMENAZAS
@@ -84,29 +89,27 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
                 this.fishes.splice(i, 1)// Remove fish from the array
 
-                this.score+=10; // Update the score
+                this.score += fish.score; // Update the score
 
                 this.fishes.push(new Fishes(this.gameScreen))
 
-                this.threats.push(new Threats(this.gameScreen))
-
                 i--; // Update the counter variable for the removed fishes
 
-            }  
+            }
             if (fish.length <= 2) { // If the fish goes over the client width
                 const newFish = new Fishes(this.gameScreen); // Create a new instance of the Fishes class
                 this.fishes.push(newFish); // Add the new fish to the fishes array
-              }
+            }
 
-              if(fish.left < -200){
+            if (fish.left < -200) {
                 fish.element.remove(); // Remove the fish element from the DOM
 
                 this.fishes.splice(i, 1)
 
                 i--; // Update the counter variable for the removed fishes
-              }
-            
-        
+            }
+
+
             document.getElementById('score').innerText = this.score
         }
 
@@ -123,41 +126,25 @@ class Game { // We create the Game class, no arguments in the constructor but in
                 this.threats.splice(j, 1) // Remove the threat from the array
 
                 j--; // Update the counter variable for the removed threats
-                this.threats.push(new Threats (this.gameScreen))
+                this.threats.push(new Threats(this.gameScreen))
 
-            } 
-            if (this.threats.length <= 2) { // If the fish goes over the client width
-                 // Add the new fish to the fishes array
+            }
+            if (this.threats.length <= 1) { // If the fish goes over the client width
+                // Add the new fish to the fishes array
                 const newThreat = new Threats(this.gameScreen); // Create a new instance of the Fishes class
-              this.threats.push(newThreat);
-              }
+                this.threats.push(newThreat);
+            }
 
-              if(threat.left < -200){
+            if (threat.left < -200) {
                 threat.element.remove(); // Remove the fish element from the DOM
 
                 this.threats.splice(j, 1)
 
                 j--; // Update the counter variable for the removed fishes
-              }
+            }
 
             document.getElementById('lives').innerText = this.lives
         }
-
-
-        // If you ran out of lives(0), end the game
-        if (this.lives <= 0) {
-            this.endGame();
-        }
-
-        if(this.score === 100){
-            this.endGameWin()
-        }
-
-        // We create a new fish based on a random probability
-        // when there is no other fish on the screen
-      
-        // We create a new threat based on a random probability
-        // when there is no other fish on the screen
 
         if (Math.random() > 0.6 && this.threats.length <= 1) {
             this.threats.push(new Threats(this.gameScreen));
@@ -165,6 +152,24 @@ class Game { // We create the Game class, no arguments in the constructor but in
         if (Math.random() > 0.8 && this.fishes.length <= 1) {
             this.fishes.push(new Fishes(this.gameScreen));
         }
+
+        // If you ran out of lives(0), end the game
+        if (this.lives <= 0) {
+            this.endGame();
+        }
+        if (!this.resumedGame && this.score >= 150 && this.lives >=1) {
+            this.endGameWin();
+        }
+
+        //if
+     
+
+        // We create a new fish based on a random probability
+        // when there is no other fish on the screen
+
+        // We create a new threat based on a random probability
+        // when there is no other fish on the screen
+
 
         //We create a new threat when there is no other in the screen based on random
     }
@@ -179,34 +184,61 @@ class Game { // We create the Game class, no arguments in the constructor but in
             threa.element.remove();
         })
 
+        const resumeButton = document.getElementById("resume-button");
+        resumeButton.style.display = "none"
         this.gameIsOver = true;
         // Hide game screen
         this.gameScreen.style.display = "none";
         this.gameContainer.style.display = "none";
         // Show end game screen
         this.gameEndScreen.style.display = "flex";
+        document.getElementById("endScreenTitle").innerText = "Did you shoot a shark...               or did you tangle with a jellyfish? xD"
+        document.getElementById("endScreenPa").innerText = `Aqua"man" is waiting for dessert`
         
+
+        clearInterval(this.gameIntervalId)
     }
 
     endGameWin() {
-        this.player.element.remove(); //We remove the playerr
-        this.fishes.forEach(function (fish) { //For each fish or threat, remove.
-            fish.element.remove();
-        });
-        this.threats.forEach(function (threa) {
-            threa.element.remove();
-        })
-
         this.gameIsOver = true;
-        // Hide game screen
+        this.displayGameEndScreen();
+
+    }
+
+    displayGameEndScreen() { // Create a method to show the gameEndSreen
+
         this.gameScreen.style.display = "none";
         this.gameContainer.style.display = "none";
         // Show end game screen
         this.gameEndScreen.style.display = "flex";
+
+        // display the game end screen and add a resume button
+        const resumeButton = document.getElementById("resume-button");
+        gameEndScreenText.appendChild(resumeButton); // Append the button to the gameScreen Text;
+        resumeButton.addEventListener("click", () => {
+            this.resumeGame();
+        });
         document.getElementById("endScreenTitle").innerText = "You got an huge amount of fish... impresive"
         document.getElementById("endScreenPa").innerText = `Aqua"man" will miss its friends`
-    
     }
+
+    resumeGame() {
+        this.gameIsOver = false;
+        this.resumedGame = true;
+
+        this.gameContainer.style.display = "flex";
+        this.gameScreen.style.display = "flex";
+        this.gameEndScreen.style.display = "none";
+        this.stats.style.display = "flex";
+
+        this.gameIntervalId = setInterval(() => {
+            this.gameLoop()
+        }, this.gameLoopFrequency)
+
+        
+    }
+
+
 
     restartGame() {
         this.player.element.remove(); //We remove the playerr
@@ -215,10 +247,11 @@ class Game { // We create the Game class, no arguments in the constructor but in
         });
         this.threats.forEach(function (threa) {
             threa.element.remove();
+        })
 
-            this.background.forEach(function (back) {
-                back.element.remove();
-            })
+        this.background.forEach(function (back) {
+            back.element.remove();
+
         })
 
         this.gameOver = false;
@@ -229,5 +262,7 @@ class Game { // We create the Game class, no arguments in the constructor but in
 
     }
 }
+
+
 
 

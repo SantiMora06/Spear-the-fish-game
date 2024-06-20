@@ -10,6 +10,7 @@ const button = document.getElementsByTagName("button")
 const next = document.getElementById("next-button")
 const fishTxt = document.getElementById("fishesText")
 const playAgain = document.getElementById("play-again");
+const gameEndScreenText = document.getElementById("game-end-screen-text")
 
 fishesInfo.addEventListener("click", showFishesInfo)
 

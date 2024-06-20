@@ -35,7 +35,7 @@ class Threats {
   
     move() {
       // The threat needs to move
-      this.left -= 4;
+      this.left -= 5;
       // We need to update the fishes position on the game Screen
       this.updatePosition();
     }

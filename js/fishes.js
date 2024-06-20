@@ -11,19 +11,28 @@ class Fishes {
       this.element.src = "images/Vieja1.png";
 
       const randomFish = Math.random();
-      if(randomFish <= 0.4){
+      if(randomFish <= 0.3){
         this.element = document.createElement("img")
         this.element.src = "images/Vieja1.png";
-      } else if (randomFish <= 0.7) {
+        this.score = 10;
+      } else if (randomFish <= 0.6) {
         this.element = document.createElement("img")
         this.element.src = "images/download.png";
         this.width = 140;
         this.height = 60;
-      } else {
+        this.score = 20;
+      } else if (randomFish <= 0.8){
         this.element = document.createElement("img")
         this.element.src = "images/Bicuda.png";
         this.width = 160;
         this.height = 90;
+        this.score = 30;
+      } else {
+        this.element = document.createElement("img")
+        this.element.src = "images/turtle.png";
+        this.width = 160;
+        this.height = 90;
+        this.score = -50;
       }
     
       this.element.style.position = "absolute";

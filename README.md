@@ -22,7 +22,7 @@
 - Add threats that doesn't kill you but takes points from the score.
 - Increase speed of the threats and fishes depending on the score.
 - Creating an infinite mode where you will challenge yourself.
-- Create a High-Scores to track locally the score and player's name.
+- Create a High-Scores to track locally the score and player's name. :merman:
 - Add more images on fish info.
 - Add a big threat every "x" points, as a Megalodon or a whalekiller.
 - Make the threats and fishes appear more split, not one on the other.
@@ -49,17 +49,89 @@
 
 ## Data Structure
 
-### 
-### 
-### 
-### 
-### 
-### 
+### index.js
+
+- startGame();
+- restartGame();
+
+### game.js
+
+- this.introScreen;
+- this.gameScreen;
+- this.gameEndScreen;
+- this.stats;
+- this.gameContainer;
+- this.height;
+- this.width;
+- this.fishes;
+- this.threats;
+- this.score;
+- this.lives;
+- this.gameIsOver;
+- this.gameIntervalId;
+- this.gameLoopFrequency;
+
+-  start();
+- gameLoop();
+- update();
+- endGame();
+- endGameWin();
+- restartGame();
+
+### player.js
+
+- move();
+- didCollideWithFish(fish);
+- didCollideWithThreat(threat);
+- updatePosition();
+
+### background.js
+
+- this.gameScreen;
+- this.left;
+- this.top;
+- this.width;
+- this.height;
+- this.element;
+
+### fishes.js
+
+- this.gameScreen;
+- this.left;
+- this.top;
+- this.width;
+- this.height;
+- this.element;
+- this.score;
+
+- updatePosition();
+- move();
+
+### threats.js
+
+- this.gameScreen;
+- this.left;
+- this.top;
+- this.width;
+- this.height;
+- this.element;
+
+- updatePosition();
+- move();
+
+### info.js
+
+- showFishesInfo();
+- nextPageFishesInfo();
+- restartGame();
 
 
 ## Links
 
-- [Trello Link](https://trello.com)
-- [Slides Link](http://slides.com)
-- [Github repository Link](https://github.com/SantiMora06/Spear-the-fish-game)
-- [Deployment Link](https://santimora06.github.io/Spear-the-fish-game/index.html)
+### [Trello Link](https://trello.com)
+
+### [Slides Link](http://slides.com)
+
+### [Github repository Link](https://github.com/SantiMora06/Spear-the-fish-game)
+
+### [Deployment Link](https://santimora06.github.io/Spear-the-fish-game/index.html)

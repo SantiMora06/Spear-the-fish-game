@@ -10,6 +10,7 @@ const stats = document.getElementById("stats")
 const soundWater = document.getElementById("waterSound");
 const heartbeat = document.getElementById("heartbeat1")
 
+
 let game;
 
   
@@ -25,7 +26,6 @@ function startGame() {
 
     console.log(startButton)
 }
-
 
 restartButton.addEventListener("click", function() {
     restartGame()
